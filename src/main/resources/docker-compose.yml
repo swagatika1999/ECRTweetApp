@@ -1,0 +1,21 @@
+version: "3"
+services:
+
+  test:
+    image: mongo:latest
+    container_name: "test"
+    ports:
+      - "0.0.0.0:27017:27017"
+    
+  tweetapp:
+     image: tweetapp-mongodb
+     container_name: tweetapp
+     ports: 
+       - 8081:8081
+     links:
+       - test
+     depends_on:
+       - test
+   
+    
+    
